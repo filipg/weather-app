@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './layout/navbar/navbar.component';
 import { WeatherComponent } from './weather/weather.component';
 import { CompareWeatherComponent } from './weather/compare-weather/compare-weather.component';
+import { CitySelectionComponent } from './weather/city-selection/city-selection.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     WeatherComponent,
-    CompareWeatherComponent
+    CompareWeatherComponent,
+    CitySelectionComponent
   ],
   imports: [
     BrowserModule,
