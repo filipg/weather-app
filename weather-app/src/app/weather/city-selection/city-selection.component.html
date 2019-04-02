@@ -1,5 +1,8 @@
 <div class="selection-container">
-  <div *ngFor="let city of cities">
-    {{city.city}}
+  <h1>Please enter the city in which you would like to check weather or select from proposed cities.</h1>
+  <div class="selection-cities">
+    <div class="selection-city" *ngFor="let city of cities">
+      <button class="selection-button" (click)="selectCity(city)">{{city.city}}</button>
+    </div>
   </div>
 </div>

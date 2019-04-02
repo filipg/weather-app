@@ -1,3 +1,35 @@
-.selection-container {
-    
+.selection {
+    &-container {
+        min-height: 700px;
+        border: 1px solid red;
+        text-align: center;
+    }
+    &-cities {
+        width: 80%;
+        margin: 20px auto;
+        border: 1px solid green;
+        height: 500px;
+    }
+    &-city {
+        display: inline-block;
+        width: 20%;
+        height: 70px;
+        border: 1px solid green;
+        margin: 20px;
+        // padding: 20px;
+    }
+    &-button {
+        width: 100%;
+        height: 100%;
+        outline: none;
+        cursor: pointer;
+        background-color: #d9d9d9;
+        border-radius: 15px;
+        font-size: 28px;
+        border: 1px solid #333333;
+        transition: 0.3s;
+    }
+    &-button:hover {
+        background-color: #808080;
+    }
 }

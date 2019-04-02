@@ -17,4 +17,8 @@ export class CitySelectionComponent implements OnInit {
     this.cities = this.cityService.cities;
   }
 
+  selectCity(city: City) {
+    console.log(city.city);
+  }
+
 }
