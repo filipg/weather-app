@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CityService } from 'src/app/shared/services/city.service';
+import { City } from 'src/app/shared/city.type';
 
 @Component({
   selector: 'app-city-selection',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CitySelectionComponent implements OnInit {
 
-  constructor() { }
+  cities: City[] = [];
+
+  constructor(private cityService: CityService) { }
 
   ngOnInit() {
+    this.cities = this.cityService.cities;
   }
 
 }
