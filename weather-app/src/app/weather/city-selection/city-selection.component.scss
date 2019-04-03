@@ -4,6 +4,31 @@
         border: 1px solid red;
         text-align: center;
     }
+    &-header {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        padding: 20px;
+        margin: 20px;
+    
+        &-text {
+            font-size: 54px;
+        }
+        &-check-button {
+            width: 20%;
+            height: 80px;
+            border: 1px solid #33cc33;
+            background-color: #ffffff;
+            cursor: pointer;
+            border-radius: 36px;
+            font-size: 36px;
+            transition: 0.3s;
+            outline: none;
+        }
+        &-check-button:hover {
+            background-color:  #ebfaeb;
+        }
+    }
     &-cities {
         width: 80%;
         margin: 20px auto;
