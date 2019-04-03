@@ -8,11 +8,19 @@
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
-        padding: 20px;
+        padding: 20px 70px;
         margin: 20px;
     
         &-text {
             font-size: 54px;
+        }
+        input {
+            width: auto;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            text-align: center;
+            font-size: 28px;
         }
         &-check-button {
             width: 20%;
