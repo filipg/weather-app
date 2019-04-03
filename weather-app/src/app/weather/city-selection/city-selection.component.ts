@@ -9,6 +9,8 @@ import { City } from 'src/app/shared/city.type';
 })
 export class CitySelectionComponent implements OnInit {
 
+  selectedCity: City;
+  selectedCityName: string;
   cities: City[] = [];
 
   constructor(private cityService: CityService) { }
@@ -17,8 +19,18 @@ export class CitySelectionComponent implements OnInit {
     this.cities = this.cityService.cities;
   }
 
+  checkWeather(city: string) {
+    if(this.selectedCity && city === this.selectedCity.city) {
+      console.log('We will use mocked objects - ', this.selectedCity.city, 
+      this.selectedCity.latitude, this.selectedCity.longitude);
+    } else {
+      console.log("I just have city string name - " + city);      
+    }
+  }
+
   selectCity(city: City) {
-    console.log(city.city);
+    this.selectedCity = city;
+    this.selectedCityName = city.city;
   }
 
 }

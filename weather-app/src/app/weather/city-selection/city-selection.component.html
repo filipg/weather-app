@@ -1,10 +1,9 @@
 <div class="selection-container">
   <!-- <h1>Please enter the city in which you would like to check weather or select from proposed cities.</h1> -->
   <div class="selection-header">
-    <!-- <h1>Check weather in ... </h1> -->
     <div class="selection-header-text">Check weather in ...</div>
-    <input placeholder="city">
-    <button class="selection-header-check-button">Check</button>
+    <input placeholder="city" [(ngModel)]="selectedCityName">
+    <button class="selection-header-check-button" (click)="checkWeather(selectedCityName)">Check</button>
   </div>
   <div class="selection-cities">
     <div class="selection-city" *ngFor="let city of cities">

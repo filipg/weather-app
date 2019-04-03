@@ -1,13 +1,13 @@
 .selection {
     &-container {
         min-height: 700px;
-        border: 1px solid red;
         text-align: center;
     }
     &-header {
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
+        align-items: center;
         padding: 20px 70px;
         margin: 20px;
     
@@ -40,16 +40,13 @@
     &-cities {
         width: 80%;
         margin: 20px auto;
-        border: 1px solid green;
         height: 500px;
     }
     &-city {
         display: inline-block;
         width: 20%;
         height: 70px;
-        border: 1px solid green;
         margin: 20px;
-        // padding: 20px;
     }
     &-button {
         width: 100%;
