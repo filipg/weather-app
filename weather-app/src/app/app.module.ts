@@ -7,7 +7,8 @@ import { NavbarComponent } from './layout/navbar/navbar.component';
 import { WeatherComponent } from './weather/weather.component';
 import { CompareWeatherComponent } from './weather/compare-weather/compare-weather.component';
 import { CitySelectionComponent } from './weather/city-selection/city-selection.component';
-import { FormsModule } from '@angular/forms'; 
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

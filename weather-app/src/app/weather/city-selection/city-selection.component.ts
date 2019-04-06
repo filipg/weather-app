@@ -19,7 +19,9 @@ export class CitySelectionComponent implements OnInit {
 
   ngOnInit() {
     this.cities = this.cityService.cities;
-    console.log(this.weatherService.a);
+    this.weatherService.getWrather().subscribe((data) => {
+      console.log(data);
+    });
   }
 
   checkWeather(city: string) {
