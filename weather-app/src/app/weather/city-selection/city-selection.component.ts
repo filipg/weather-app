@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CityService } from 'src/app/shared/services/city.service';
 import { City } from 'src/app/shared/city.type';
+import { WeatherService } from 'src/app/shared/services/weather.service';
 
 @Component({
   selector: 'app-city-selection',
@@ -13,10 +14,12 @@ export class CitySelectionComponent implements OnInit {
   selectedCityName: string;
   cities: City[] = [];
 
-  constructor(private cityService: CityService) { }
+  constructor(private cityService: CityService,
+    private weatherService: WeatherService) { }
 
   ngOnInit() {
     this.cities = this.cityService.cities;
+    console.log(this.weatherService.a);
   }
 
   checkWeather(city: string) {
