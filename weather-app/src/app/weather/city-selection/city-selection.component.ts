@@ -39,7 +39,7 @@ export class CitySelectionComponent implements OnInit {
   }
 
   fetchLatitudeLongitude(city: string) {
-    this.weatherService.getLatitudeLongitude().subscribe((data: any) => {
+    this.weatherService.getLatitudeLongitude(city).subscribe((data: any) => {
       if(data.features.length) {
         console.log('longitude - ' + data.features[0].center[0]);
         console.log('latitude - ' + data.features[0].center[1]);
