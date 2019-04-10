@@ -28,8 +28,8 @@ export class CitySelectionComponent implements OnInit {
 
   checkWeather(city: string) {
     if(this.selectedCity && city === this.selectedCity.city) {
-      const {latitude, longitude} = this.selectedCity;
-      this.router.navigate(['/weather-for-city', {latitude, longitude}]); //TODO: think what when I will have backgroud image of city
+      const {city, latitude, longitude} = this.selectedCity;
+      this.router.navigate(['/weather-for-city', {city, latitude, longitude}]); //TODO: think what when I will have backgroud image of city
     } else {
       this.fetchLatitudeLongitude(city);
     }
@@ -39,7 +39,7 @@ export class CitySelectionComponent implements OnInit {
     this.weatherService.getLatitudeLongitude(city).subscribe((data: any) => {
       if(data.features.length) {
         const location = data.features[0].center; //TODO: add types (make object)
-        this.router.navigate(['/weather-for-city', {latitude: location[1], longitude: location[0]}]);
+        this.router.navigate(['/weather-for-city', {city: city, latitude: location[1], longitude: location[0]}]);
       } else {
         this.locationError = true;
       }

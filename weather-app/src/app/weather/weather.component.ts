@@ -8,6 +8,7 @@ import { WeatherService } from '../shared/services/weather.service';
   styleUrls: ['./weather.component.css']
 })
 export class WeatherComponent implements OnInit {
+  city: string;
   latitude: string;
   longitude: string;
 
@@ -17,8 +18,10 @@ export class WeatherComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.city = this.getParams('city');
     this.latitude = this.getParams('latitude');
     this.longitude = this.getParams('longitude');
+    
     this.weatherService.getWeather(this.latitude, this.longitude).subscribe(data => {
       console.log('GET DATA FROM API !!!');
       console.log(data);
