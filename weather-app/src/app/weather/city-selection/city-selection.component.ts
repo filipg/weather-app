@@ -16,33 +16,30 @@ export class CitySelectionComponent implements OnInit {
   cities: City[] = [];
   locationError: boolean = false;
 
-  constructor(private cityService: CityService,
+  constructor(
+    private cityService: CityService,
     private weatherService: WeatherService,
-    private router: Router) { }
+    private router: Router
+    ) { }
 
   ngOnInit() {
     this.cities = this.cityService.cities;
-    // this.weatherService.getWrather().subscribe((data) => {
-    //   console.log(data);
-    // });
   }
 
   checkWeather(city: string) {
     if(this.selectedCity && city === this.selectedCity.city) {
-      const {city, latitude, longitude} = this.selectedCity;
-      console.log('We will use mocked objects - ', city, latitude, longitude);
-      this.router.navigate(['/weather-for-city', {latitude, longitude}]);
+      const {latitude, longitude} = this.selectedCity;
+      this.router.navigate(['/weather-for-city', {latitude, longitude}]); //TODO: think what when I will have backgroud image of city
     } else {
-      console.log("I just have city string name - " + city);
       this.fetchLatitudeLongitude(city);
     }
   }
 
-  fetchLatitudeLongitude(city: string) {
+  private fetchLatitudeLongitude(city: string) {
     this.weatherService.getLatitudeLongitude(city).subscribe((data: any) => {
       if(data.features.length) {
-        console.log('longitude - ' + data.features[0].center[0]);
-        console.log('latitude - ' + data.features[0].center[1]);
+        const location = data.features[0].center; //TODO: add types (make object)
+        this.router.navigate(['/weather-for-city', {latitude: location[1], longitude: location[0]}]);
       } else {
         this.locationError = true;
       }

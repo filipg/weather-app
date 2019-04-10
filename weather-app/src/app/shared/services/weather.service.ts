@@ -13,6 +13,6 @@ export class WeatherService {
   }
 
   getLatitudeLongitude(city: string) {
-    return this.http.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${city}.json?access_token=pk.eyJ1IjoiZmlsaXBnIiwiYSI6ImNqdWJkemhkYjBjZzk0M21sc2RpYnlrZ2oifQ.kLlhqHGZUJKLCDk9x1iEbw`);
+    return this.http.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${city}.json?access_token=pk.eyJ1IjoiZmlsaXBnIiwiYSI6ImNqdWJkemhkYjBjZzk0M21sc2RpYnlrZ2oifQ.kLlhqHGZUJKLCDk9x1iEbw&limit=1`);
   }
 }
