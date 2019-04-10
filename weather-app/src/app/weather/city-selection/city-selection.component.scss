@@ -37,6 +37,10 @@
             background-color:  #ebfaeb;
         }
     }
+    &-error {
+        color: red;
+        font-size: 26px;
+    }
     &-cities {
         width: 80%;
         margin: 20px auto;

@@ -14,6 +14,7 @@ export class CitySelectionComponent implements OnInit {
   selectedCity: City;
   selectedCityName: string;
   cities: City[] = [];
+  locationError: boolean = false;
 
   constructor(private cityService: CityService,
     private weatherService: WeatherService,
@@ -39,16 +40,27 @@ export class CitySelectionComponent implements OnInit {
 
   fetchLatitudeLongitude(city: string) {
     this.weatherService.getLatitudeLongitude().subscribe((data: any) => {
-      console.log('longitude - ' + data.features[0].center[0]);
-      console.log('latitude - ' + data.features[0].center[1]);
+      if(data.features.length) {
+        console.log('longitude - ' + data.features[0].center[0]);
+        console.log('latitude - ' + data.features[0].center[1]);
+      } else {
+        this.locationError = true;
+      }
     }, error => {
-      console.log('Error !!!!!! ' + error);
+      console.log(error);
+      this.locationError = true;
     });
   }
 
   selectCity(city: City) {
     this.selectedCity = city;
     this.selectedCityName = city.city;
+  }
+
+  checkForError() {
+    if(this.locationError) {
+      this.locationError=!this.locationError;
+    }
   }
 
 }
