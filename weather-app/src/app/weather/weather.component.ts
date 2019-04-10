@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { WeatherService } from '../shared/services/weather.service';
 
 @Component({
   selector: 'app-weather',
@@ -6,10 +8,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./weather.component.css']
 })
 export class WeatherComponent implements OnInit {
+  latitude: string;
+  longitude: string;
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private weatherService: WeatherService,
+  ) { }
 
   ngOnInit() {
+    this.latitude = this.getParams('latitude');
+    this.longitude = this.getParams('longitude');
+    this.weatherService.getWeather(this.latitude, this.longitude).subscribe(data => {
+      console.log('GET DATA FROM API !!!');
+      console.log(data);
+    });
+  }
+
+  private getParams(params: string) {
+    return this.route.snapshot.paramMap.get(params);
   }
 
 }
