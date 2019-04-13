@@ -1,5 +1,4 @@
 <div class="selection-container">
-  <!-- <h1>Please enter the city in which you would like to check weather or select from proposed cities.</h1> -->
   <div class="selection-header">
     <div class="selection-header-text">Check weather in ...</div>
     <input placeholder="city" [(ngModel)]="selectedCityName" (ngModelChange)="checkForError()">
@@ -14,3 +13,5 @@
     </div>
   </div>
 </div>
+
+<app-weather></app-weather>

@@ -1,10 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Subject } from 'rxjs';
+import { City } from '../city.type';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WeatherService {
+
+  cityCheck = new Subject<City>();
 
   constructor(private http: HttpClient) { }
 

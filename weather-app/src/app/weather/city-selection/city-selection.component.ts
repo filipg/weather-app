@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { CityService } from 'src/app/shared/services/city.service';
 import { City } from 'src/app/shared/city.type';
 import { WeatherService } from 'src/app/shared/services/weather.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-city-selection',
@@ -19,7 +18,6 @@ export class CitySelectionComponent implements OnInit {
   constructor(
     private cityService: CityService,
     private weatherService: WeatherService,
-    private router: Router
     ) { }
 
   ngOnInit() {
@@ -29,7 +27,7 @@ export class CitySelectionComponent implements OnInit {
   checkWeather(city: string) {
     if(this.selectedCity && city === this.selectedCity.city) {
       const {city, latitude, longitude} = this.selectedCity;
-      this.router.navigate(['/weather-for-city', {city, latitude, longitude}]); //TODO: think what when I will have backgroud image of city
+      this.sendCityCheckRequest(city, latitude, longitude);
     } else {
       this.fetchLatitudeLongitude(city);
     }
@@ -39,7 +37,7 @@ export class CitySelectionComponent implements OnInit {
     this.weatherService.getLatitudeLongitude(city).subscribe((data: any) => {
       if(data.features.length) {
         const location = data.features[0].center; //TODO: add types (make object)
-        this.router.navigate(['/weather-for-city', {city: city, latitude: location[1], longitude: location[0]}]);
+        this.sendCityCheckRequest(city, location[1], location[0]);
       } else {
         this.locationError = true;
       }
@@ -47,6 +45,11 @@ export class CitySelectionComponent implements OnInit {
       console.log(error);
       this.locationError = true;
     });
+  }
+
+  private sendCityCheckRequest(city: string, latitude: string, longitude: string) {
+    const cityToCheck: City = {city, latitude, longitude};
+    this.weatherService.cityCheck.next(cityToCheck);
   }
 
   selectCity(city: City) {
