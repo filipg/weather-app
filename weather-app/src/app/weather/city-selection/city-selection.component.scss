@@ -1,6 +1,5 @@
 .selection {
     &-container {
-        min-height: 700px;
         text-align: center;
     }
     &-header {
@@ -9,6 +8,7 @@
         flex-wrap: wrap;
         align-items: center;
         padding: 20px 70px;
+        width: 100%;
     
         &-text {
             font-size: 54px;

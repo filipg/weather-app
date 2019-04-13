@@ -14,6 +14,8 @@ export class CitySelectionComponent implements OnInit {
   selectedCityName: string;
   cities: City[] = [];
   locationError: boolean = false;
+  panelOpenState: boolean = true;
+  // setDisabled: boolean = true;
 
   constructor(
     private cityService: CityService,
@@ -62,5 +64,4 @@ export class CitySelectionComponent implements OnInit {
       this.locationError=!this.locationError;
     }
   }
-
 }
