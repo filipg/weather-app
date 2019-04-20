@@ -1,0 +1,22 @@
+.current-weather {
+    &-container {
+        padding: 30px;
+        text-align: left;
+    }
+
+    &-header {
+        font-size: 36px;
+        font-weight: 700;
+        padding: 20px;
+    }
+
+    &-content {
+        font-size: 26px;
+        padding: 20px;
+
+        &-item {
+            font-weight: 500;
+            padding: 10px;
+        }
+    }
+}

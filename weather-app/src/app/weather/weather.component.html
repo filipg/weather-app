@@ -2,7 +2,10 @@
 <div class="weather-container" *ngIf="cityCondition">
     <mat-tab-group mat-align-tabs="center">
         <mat-tab label="Currently">
-            Currently
+            <app-current-weather
+                [city]="cityName"
+                [currentWeather]="city.currently | json">
+            </app-current-weather>
         </mat-tab>
         <mat-tab label="Hourly">
             Hourly
