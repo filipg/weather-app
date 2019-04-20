@@ -1,4 +1,11 @@
 <mat-spinner *ngIf="!cityCondition && spinnerCondition" class="spinner"></mat-spinner>
 <div class="weather-container" *ngIf="cityCondition">
     <h1>Checking weather for {{city}}</h1>
+    <p>{{currentWeather.apparentTemperature}}</p>
+    <p>{{currentWeather.cloudCover}}</p>
+    <p>{{currentWeather.dewPoint}}</p>
+    <p>{{currentWeather.humidity}}</p>
+    <p>{{currentWeather.summary}}</p>
+    <p>{{currentWeather.nearestStormBearing}}</p>
+    <p>{{currentWeather.temperature}}</p>
 </div>
