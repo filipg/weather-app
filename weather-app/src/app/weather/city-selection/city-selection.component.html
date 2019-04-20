@@ -1,22 +1,25 @@
 <div class="selection-container">
-  <mat-expansion-panel hideToggle="true" [expanded]="panelOpenState" [disabled]="setDisabled">
-    <mat-expansion-panel-header collapsedHeight="100px" expandedHeight="100px">
-      <div class="selection-header">
-        <div class="selection-header-text">Check weather in ...</div>
-        <input placeholder="city" [(ngModel)]="selectedCityName" (ngModelChange)="checkForError()">
-        <button class="selection-header-check-button" (click)="checkWeather(selectedCityName)">Check</button>
-      </div>
-      <div *ngIf="locationError" class="selection-error">
-        Unable to find location, try one more time
-      </div>
-    </mat-expansion-panel-header>
+  <!-- <mat-accordion #expansionPanel="matAccordion"> -->
+    <mat-expansion-panel  #expansionPanel="matExpansionPanel"
+      hideToggle="true" [(expanded)]="panelOpenState" [(disabled)]="setDisabled">
+      <mat-expansion-panel-header collapsedHeight="100px" expandedHeight="100px">
+        <div class="selection-header">
+          <div class="selection-header-text">Check weather in ...</div>
+          <input placeholder="city" [(ngModel)]="selectedCityName" (ngModelChange)="checkForError()">
+          <button class="selection-header-check-button" (click)="checkWeather(selectedCityName)">Check</button>
+        </div>
+        <div *ngIf="locationError" class="selection-error">
+          Unable to find location, try one more time
+        </div>
+      </mat-expansion-panel-header>
 
-    <div class="selection-cities">
-      <div class="selection-city" *ngFor="let city of cities">
-        <button class="selection-button" (click)="selectCity(city)">{{city.city}}</button>
+      <div class="selection-cities">
+        <div class="selection-city" *ngFor="let city of cities">
+          <button class="selection-button" (click)="selectCity(city)">{{city.city}}</button>
+        </div>
       </div>
-    </div>
-  </mat-expansion-panel>
+    </mat-expansion-panel>
+  <!-- </mat-accordion> -->
 </div>
 
 <app-weather></app-weather>

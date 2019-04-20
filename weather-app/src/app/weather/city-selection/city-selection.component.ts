@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CityService } from 'src/app/shared/services/city.service';
 import { City } from 'src/app/shared/city.type';
 import { WeatherService } from 'src/app/shared/services/weather.service';
+import { MatAccordion, MatExpansionPanel } from '@angular/material';
 
 @Component({
   selector: 'app-city-selection',
@@ -15,7 +16,8 @@ export class CitySelectionComponent implements OnInit {
   cities: City[] = [];
   locationError: boolean = false;
   panelOpenState: boolean = true;
-  // setDisabled: boolean = true;
+  setDisabled: boolean = true;
+  @ViewChild('expansionPanel') expansionPanel: MatExpansionPanel;
 
   constructor(
     private cityService: CityService,
@@ -50,8 +52,17 @@ export class CitySelectionComponent implements OnInit {
   }
 
   private sendCityCheckRequest(city: string, latitude: string, longitude: string) {
+    this.closeExpansionPanel();
     const cityToCheck: City = {city, latitude, longitude};
     this.weatherService.cityCheck.next(cityToCheck);
+  }
+
+  private closeExpansionPanel() {
+    this.panelOpenState = false;
+
+    this.setDisabled = false;
+  
+    this.expansionPanel.close();
   }
 
   selectCity(city: City) {
@@ -64,4 +75,7 @@ export class CitySelectionComponent implements OnInit {
       this.locationError=!this.locationError;
     }
   }
+  // a() {
+  //   this.expansionPanel.toggle();
+  // }
 }
