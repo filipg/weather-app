@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { WeatherService } from '../shared/services/weather.service';
 import { City } from '../shared/city.type';
 import { Subscription } from 'rxjs';
+import { map } from 'rxjs/operators'
 
 @Component({
   selector: 'app-weather',
@@ -29,7 +30,11 @@ export class WeatherComponent implements OnInit, OnDestroy {
   private checkWeatherForCity(cityToCheckWeather: City) {
     const { city, latitude, longitude } = cityToCheckWeather;
     this.city = city;
-    this.weatherService.getWeather(latitude, longitude).subscribe(data => {
+    this.weatherService.getWeather(latitude, longitude)
+    .pipe(
+      map(darkSkyResponse => darkSkyResponse['currently'])
+    )
+    .subscribe(data => {
       setTimeout(() => {
         this.cityCondition = true;
         this.spinnerCondition = false;
