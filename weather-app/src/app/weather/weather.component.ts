@@ -3,7 +3,7 @@ import { WeatherService } from '../shared/services/weather.service';
 import { City } from '../shared/city.type';
 import { Subscription } from 'rxjs';
 import { map } from 'rxjs/operators'
-import { DarkSkyCurrently } from '../shared/models/darksky.type';
+import { DarkSkyCurrently, DarkSkyResponse } from '../shared/models/darksky.type';
 
 @Component({
   selector: 'app-weather',
@@ -12,11 +12,11 @@ import { DarkSkyCurrently } from '../shared/models/darksky.type';
 })
 export class WeatherComponent implements OnInit, OnDestroy {
 
-  city: string;
+  cityName: string;
   cityCondition = false;
   spinnerCondition = false;
   cityToCheck: Subscription;
-  currentWeather: DarkSkyCurrently;
+  city: DarkSkyResponse;
 
   constructor(
     private weatherService: WeatherService,
@@ -31,17 +31,17 @@ export class WeatherComponent implements OnInit, OnDestroy {
 
   private checkWeatherForCity(cityToCheckWeather: City) {
     const { city, latitude, longitude } = cityToCheckWeather;
-    this.city = city;
     this.weatherService.getWeather(latitude, longitude)
     .pipe(
       map(darkSkyResponse => darkSkyResponse['currently'])
     )
-    .subscribe((data: DarkSkyCurrently) => {
+    .subscribe((data: DarkSkyResponse) => {
       setTimeout(() => {
+        this.cityName = city;
         this.cityCondition = true;
         this.spinnerCondition = false;
-        this.currentWeather = data;
-        console.log(this.currentWeather);
+        this.city = data;
+        console.log(this.city);
       }, 1000);
     });
   }

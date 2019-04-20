@@ -19,3 +19,7 @@ export interface DarkSkyCurrently {
     windGust: number,
     windSpeed: number
 }
+
+export interface DarkSkyResponse {
+    currently: DarkSkyCurrently,
+}
