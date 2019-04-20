@@ -1,29 +1,29 @@
 <div class="current-weather-container">
-  <div class="current-weather-header">
-    {{city}}
-  </div>
+    <div class="current-weather-header">
+        {{city}}
+    </div>
 
-  <div class="current-weather-content">
-    <!-- <div class="current-weather-content-item">
-        Temperature: {{currentWeather.temperature}}
+    <div class="current-weather-content" *ngIf="currentWeatherCondition">
+        <div class="current-weather-content-item">
+            Temperature: {{currentWeather.temperature}} C
+        </div>
+        <div class="current-weather-content-item">
+            Humidity: {{currentWeather.humidity}}
+        </div>
+        <div class="current-weather-content-item">
+            Cloud Cover: {{currentWeather.cloudCover}}
+        </div>
+        <div class="current-weather-content-item">
+            Pressure: {{currentWeather.pressure}}
+        </div>
+        <div class="current-weather-content-item">
+            Visibility: {{currentWeather.visibility}}
+        </div>
+        <div class="current-weather-content-item">
+            Wind Speed: {{currentWeather.windSpeed}}
+        </div>
+        <div class="current-weather-content-item">
+            Summary: {{currentWeather.summary}}
+        </div>
     </div>
-    <div class="current-weather-content-item">
-        Humidity: {{currentWeather.humidity}}
-    </div>
-    <div class="current-weather-content-item">
-        Cloud Cover: {{currentWeather.cloudCover}}
-    </div>
-    <div class="current-weather-content-item">
-        Pressure: {{currentWeather.pressure}}
-    </div>
-    <div class="current-weather-content-item">
-        Visibility: {{currentWeather.visibility}}
-    </div>
-    <div class="current-weather-content-item">
-        Wind Speed: {{currentWeather.windSpeed}}
-    </div>
-    <div class="current-weather-content-item">
-        Summary: {{currentWeather.summary}}
-    </div> -->
-  </div>
 </div>
