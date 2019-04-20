@@ -21,7 +21,7 @@ export class WeatherService {
   }
 
   getWeather(latitude: string, longitude: string) {
-    return this.http.get(`https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/985434461670fbd750ec0ed8883d74bc/${latitude},${longitude}`);
+    return this.http.get(`https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/985434461670fbd750ec0ed8883d74bc/${latitude},${longitude}?exclude=minutely,hourly,daily,alerts,flags`);
   }
 
   getLatitudeLongitude(city: string) {
