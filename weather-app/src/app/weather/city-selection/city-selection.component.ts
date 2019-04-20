@@ -10,7 +10,7 @@ import { WeatherService } from 'src/app/shared/services/weather.service';
 export class CitySelectionComponent {
 
   selectedCityName: string;
-  locationError: boolean = false;
+  locationError = false;
 
   constructor(
     private weatherService: WeatherService,
@@ -33,5 +33,9 @@ export class CitySelectionComponent {
   private sendCityCheckRequest(city: string, latitude: string, longitude: string) {
     const cityToCheck: City = { city, latitude, longitude };
     this.weatherService.sendCity(cityToCheck);
+  }
+
+  checkForError() {
+    (this.locationError) ? this.locationError=false : null;
   }
 }

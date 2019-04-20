@@ -2,7 +2,8 @@
   <div class="selection-header">
     <form class="selection-header-form">
       <mat-form-field class="selection-header-form-input">
-        <input matInput placeholder="Check weather in ..." #selectedCity autocomplete="off">
+        <input matInput placeholder="Check weather in ..." 
+          #selectedCity autocomplete="off" (change)="checkForError()">
       </mat-form-field>
       <button class="selection-header-form-button" mat-button color="primary"
         (click)="checkWeather(selectedCity.value)">Check</button>
