@@ -1,3 +1,4 @@
+<mat-spinner *ngIf="!cityCondition && spinnerCondition" class="spinner"></mat-spinner>
 <div class="weather-container" *ngIf="cityCondition">
-    <h1>Checking weatehr for {{city}}</h1>
+    <h1>Checking weather for {{city}}</h1>
 </div>

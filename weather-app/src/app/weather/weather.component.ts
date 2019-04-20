@@ -11,7 +11,8 @@ import { Subscription } from 'rxjs';
 export class WeatherComponent implements OnInit, OnDestroy {
 
   city: string;
-  cityCondition: boolean = false;
+  cityCondition = false;
+  spinnerCondition = false;
   cityToCheck: Subscription;
 
   constructor(
@@ -20,16 +21,20 @@ export class WeatherComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.cityToCheck = this.weatherService.getCity().subscribe((data: City) => {
+      this.spinnerCondition = true;
       this.checkWeatherForCity(data);
     })
   }
 
   private checkWeatherForCity(cityToCheckWeather: City) {
     const { city, latitude, longitude } = cityToCheckWeather;
-    this.cityCondition = true;
     this.city = city;
     this.weatherService.getWeather(latitude, longitude).subscribe(data => {
-      console.log(data);
+      setTimeout(() => {
+        this.cityCondition = true;
+        this.spinnerCondition = false;
+        console.log(data);
+      }, 1000);
     });
   }
 
