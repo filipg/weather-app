@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { WeatherService } from '../shared/services/weather.service';
 import { City } from '../shared/city.type';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-weather',
@@ -10,21 +11,22 @@ import { City } from '../shared/city.type';
 export class WeatherComponent implements OnInit, OnDestroy {
 
   city: string;
-  cityToCheck: boolean = false;
+  cityCondition: boolean = false;
+  cityToCheck: Subscription;
 
   constructor(
     private weatherService: WeatherService,
   ) { }
 
   ngOnInit() {
-    // this.weatherService.cityCheck.subscribe((city: City) => {
-    //   this.cityToCheck = true;
-    //   this.checkWeatherForCity(city);
-    // })
+    this.cityToCheck = this.weatherService.getCity().subscribe((data: City) => {
+      this.checkWeatherForCity(data);
+    })
   }
 
   private checkWeatherForCity(cityToCheckWeather: City) {
-    const {city, latitude, longitude} = cityToCheckWeather;
+    const { city, latitude, longitude } = cityToCheckWeather;
+    this.cityCondition = true;
     this.city = city;
     this.weatherService.getWeather(latitude, longitude).subscribe(data => {
       console.log(data);
@@ -32,6 +34,6 @@ export class WeatherComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.weatherService.cityCheck.unsubscribe();
+    this.cityToCheck.unsubscribe();
   }
 }

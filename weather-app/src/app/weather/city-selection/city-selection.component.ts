@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { City } from 'src/app/shared/city.type';
 import { WeatherService } from 'src/app/shared/services/weather.service';
 
@@ -14,11 +14,11 @@ export class CitySelectionComponent {
 
   constructor(
     private weatherService: WeatherService,
-    ) { }
+  ) { }
 
   checkWeather(city: string) {
     this.weatherService.getLatitudeLongitude(city).subscribe((data: any) => {
-      if(data.features.length) {
+      if (data.features.length) {
         const location = data.features[0].center; //TODO: add types (make object)
         this.sendCityCheckRequest(city, location[1], location[0]);
       } else {
@@ -31,7 +31,7 @@ export class CitySelectionComponent {
   }
 
   private sendCityCheckRequest(city: string, latitude: string, longitude: string) {
-    const cityToCheck: City = {city, latitude, longitude};
-    this.weatherService.cityCheck.next(cityToCheck);
+    const cityToCheck: City = { city, latitude, longitude };
+    this.weatherService.sendCity(cityToCheck);
   }
 }

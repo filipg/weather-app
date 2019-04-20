@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 import { City } from '../city.type';
 
 @Injectable({
@@ -8,9 +8,17 @@ import { City } from '../city.type';
 })
 export class WeatherService {
 
-  cityCheck = new Subject<City>();
+  city = new Subject<City>();
 
   constructor(private http: HttpClient) { }
+
+  sendCity(city: City) {
+    this.city.next(city);
+  }
+
+  getCity(): Observable<City> {
+    return this.city.asObservable();
+  }
 
   getWeather(latitude: string, longitude: string) {
     return this.http.get(`https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/985434461670fbd750ec0ed8883d74bc/${latitude},${longitude}`);
