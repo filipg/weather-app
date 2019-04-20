@@ -7,7 +7,7 @@ import { NavbarComponent } from './layout/navbar/navbar.component';
 import { WeatherComponent } from './weather/weather.component';
 import { CompareWeatherComponent } from './weather/compare-weather/compare-weather.component';
 import { CitySelectionComponent } from './weather/city-selection/city-selection.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './shared/material.module';
@@ -24,6 +24,7 @@ import { MaterialModule } from './shared/material.module';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
     MaterialModule

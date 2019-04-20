@@ -17,10 +17,10 @@ export class WeatherComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.weatherService.cityCheck.subscribe((city: City) => {
-      this.cityToCheck = true;
-      this.checkWeatherForCity(city);
-    })
+    // this.weatherService.cityCheck.subscribe((city: City) => {
+    //   this.cityToCheck = true;
+    //   this.checkWeatherForCity(city);
+    // })
   }
 
   private checkWeatherForCity(cityToCheckWeather: City) {
