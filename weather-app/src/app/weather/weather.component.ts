@@ -4,7 +4,6 @@ import { City } from '../shared/city.type';
 import { Subscription } from 'rxjs';
 import { map } from 'rxjs/operators'
 import { DarkSkyCurrently } from '../shared/models/darksky.type';
-import { DarkskyService } from '../shared/services/darksky.service';
 
 @Component({
   selector: 'app-weather',
@@ -21,7 +20,6 @@ export class WeatherComponent implements OnInit, OnDestroy {
 
   constructor(
     private weatherService: WeatherService,
-    private darkSkyService: DarkskyService
   ) { }
 
   ngOnInit() {
@@ -43,9 +41,6 @@ export class WeatherComponent implements OnInit, OnDestroy {
           this.cityCondition = true;
           this.spinnerCondition = false;
           this.city = data;
-          setTimeout(() => {
-            this.darkSkyService.sendCurrentWeather(this.city);
-          }, 1000);
           console.log(this.city);
         }, 1000);
       });
