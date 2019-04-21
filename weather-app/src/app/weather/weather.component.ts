@@ -38,20 +38,22 @@ export class WeatherComponent implements OnInit, OnDestroy {
         map(darkSkyResponse => ({
           currently: darkSkyResponse['currently'],
           hourly: darkSkyResponse['hourly'],
-          daily:  darkSkyResponse['daily'],
+          daily: darkSkyResponse['daily'],
         }))
       )
       .subscribe((data: DarkSkyResponse) => {
-        setTimeout(() => {
-          this.cityName = city;
-          this.cityCondition = true;
-          this.spinnerCondition = false;
-          this.currentWeather = data.currently;
-          this.hourlyWeather = data.hourly;
-          this.dailyWeather = data.daily;
-          console.log(data);
-        }, 1000);
+        this.cityName = city;
+        this.cityCondition = true;
+        this.spinnerCondition = false;
+        this.setDarkSkyResponse(data);
       });
+  }
+
+  private setDarkSkyResponse(darkSkyResponse: DarkSkyResponse) {
+    this.currentWeather = darkSkyResponse.currently;
+    this.hourlyWeather = darkSkyResponse.hourly;
+    this.dailyWeather = darkSkyResponse.daily;
+    console.log(darkSkyResponse);
   }
 
   ngOnDestroy() {
