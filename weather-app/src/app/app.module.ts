@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './shared/material.module';
 import { CurrentWeatherComponent } from './weather/current-weather/current-weather.component';
+import { HourlyWeatherComponent } from './weather/hourly-weather/hourly-weather.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CurrentWeatherComponent } from './weather/current-weather/current-weath
     WeatherComponent,
     CompareWeatherComponent,
     CitySelectionComponent,
-    CurrentWeatherComponent
+    CurrentWeatherComponent,
+    HourlyWeatherComponent
   ],
   imports: [
     BrowserModule,

@@ -1,14 +1,17 @@
 <mat-spinner *ngIf="!cityCondition && spinnerCondition" class="spinner"></mat-spinner>
 <div class="weather-container" *ngIf="cityCondition">
-    <mat-tab-group mat-align-tabs="center">
+    <mat-tab-group mat-align-tabs="center" dynamicHeight="true">
         <mat-tab label="Currently">
             <app-current-weather
                 [city]="cityName"
-                [currentWeather]="city">
+                [currentWeather]="currentWeather">
             </app-current-weather>
         </mat-tab>
         <mat-tab label="Hourly">
-            Hourly
+            <app-hourly-weather
+            [city]="cityName"
+            [hourlyWeather]="hourlyWeather">
+            </app-hourly-weather>
         </mat-tab>
         <mat-tab label="Daily">
             Daily
