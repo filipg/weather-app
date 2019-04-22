@@ -15,6 +15,7 @@ import { CurrentWeatherComponent } from './weather/current-weather/current-weath
 import { HourlyWeatherComponent } from './weather/hourly-weather/hourly-weather.component';
 import { DailyWeatherComponent } from './weather/daily-weather/daily-weather.component';
 import { OneDayComponent } from './weather/daily-weather/one-day/one-day.component';
+import { OneDayDatePipe } from './shared/pipes/one-day-date.pipe';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { OneDayComponent } from './weather/daily-weather/one-day/one-day.compone
     CurrentWeatherComponent,
     HourlyWeatherComponent,
     DailyWeatherComponent,
-    OneDayComponent
+    OneDayComponent,
+    OneDayDatePipe
   ],
   imports: [
     BrowserModule,

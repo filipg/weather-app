@@ -1,17 +1,17 @@
 <div class="one-day-weather-container">
   <div class="one-day-weather-date">
-    {{(oneDayWeather.time*1000) | date: 'fullDate'}}
+    {{oneDayWeather.time | oneDayDate}}
   </div>
   <div class="one-day-weather-summary">
     {{oneDayWeather.summary}}
   </div>
   <div class="one-day-weather-content">
-    <p>{{(oneDayWeather.sunriseTime*1000) | date: 'shortTime'}}</p>
-    <p>{{(oneDayWeather.sunsetTime*1000) | date: 'shortTime'}}</p>
-    <p>{{oneDayWeather.temperatureHigh}}</p>
-    <p>{{oneDayWeather.temperatureLow}}</p>
-    <p>{{oneDayWeather.pressure}}</p>
-    <p>{{oneDayWeather.humidity}}</p>
-    <p>{{oneDayWeather.windSpeed}}</p>
+    <p>Sunrise time:  {{(oneDayWeather.sunriseTime*1000) | date: 'shortTime'}}</p>
+    <p>Sunset time: {{(oneDayWeather.sunsetTime*1000) | date: 'shortTime'}}</p>
+    <p>Temperature high: {{oneDayWeather.temperatureHigh}}</p>
+    <p>Temperature low: {{oneDayWeather.temperatureLow}}</p>
+    <p>Humidity: {{oneDayWeather.humidity}}</p>
+    <p>Wind speed: {{oneDayWeather.windSpeed}}</p>
+    <p>Pressure: {{oneDayWeather.pressure}}</p>
   </div>
 </div>
