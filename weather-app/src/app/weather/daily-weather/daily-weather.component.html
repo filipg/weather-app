@@ -5,4 +5,10 @@
   <div class="daily-weather-summary">
     {{dailyWeather.summary}}
   </div>
+
+  <div class="daily-weather-days">
+    <app-one-day *ngFor="let weatherDay of dailyWeather.data"
+      [oneDayWeather]="weatherDay">
+    </app-one-day>
+  </div>
 </div>

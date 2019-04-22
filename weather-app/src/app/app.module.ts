@@ -14,6 +14,7 @@ import { MaterialModule } from './shared/material.module';
 import { CurrentWeatherComponent } from './weather/current-weather/current-weather.component';
 import { HourlyWeatherComponent } from './weather/hourly-weather/hourly-weather.component';
 import { DailyWeatherComponent } from './weather/daily-weather/daily-weather.component';
+import { OneDayComponent } from './weather/daily-weather/one-day/one-day.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { DailyWeatherComponent } from './weather/daily-weather/daily-weather.com
     CitySelectionComponent,
     CurrentWeatherComponent,
     HourlyWeatherComponent,
-    DailyWeatherComponent
+    DailyWeatherComponent,
+    OneDayComponent
   ],
   imports: [
     BrowserModule,

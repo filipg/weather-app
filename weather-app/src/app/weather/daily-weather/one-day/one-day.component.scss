@@ -1,0 +1,27 @@
+.one-day-weather {
+    &-container {
+        width: 45%;
+        min-height: 600px;
+        display: inline-block;
+        vertical-align: top;
+        border: 1px solid #cccccc;
+        text-align: center;
+        margin: 20px;
+        font-size: 26px;
+    }
+
+    &-date {
+        text-align: left;
+        font-size: 36px;
+        font-weight: 600px;
+        padding: 10px;
+    }
+
+    &-summary {
+        font-weight: 500;
+    }
+
+    &-content {
+        
+    }
+}
