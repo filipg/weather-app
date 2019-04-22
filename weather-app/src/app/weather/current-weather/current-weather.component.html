@@ -5,6 +5,9 @@
 
     <div class="current-weather-content" *ngIf="currentWeather">
         <div class="current-weather-content-item">
+            Date: {{(currentWeather.time*1000) | date: 'fullDate'}}
+        </div>
+        <div class="current-weather-content-item">
             Temperature: {{currentWeather.temperature}} C
         </div>
         <div class="current-weather-content-item">
