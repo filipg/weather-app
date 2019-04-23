@@ -16,14 +16,12 @@ export class HourlyWeatherChartComponent implements OnInit, OnDestroy {
   hourlyWeatherData: DarkSkyHourlyData[];
   hourlyNgxChartsData: NgxChartsType[];
 
-  // view: any[] = [700, 400];
-  view: any[] = [980, 700];
   xAxisLabel = 'Hours';
   yAxisLabel = 'Temperature';
 
   colorScheme = {
-    // domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
-    domain: ['#AAAAAA']
+    domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
+    // domain: ['#AAAAAA']
   };
 
   constructor(
@@ -59,13 +57,7 @@ export class HourlyWeatherChartComponent implements OnInit, OnDestroy {
     return timeToDisplay;
   }
 
-
   ngOnDestroy() {
     this.hourlyWeatherDataSubscription.unsubscribe();
   }
-
-  onSelect(event) {
-    console.log(event);
-  }
-
 }
