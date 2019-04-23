@@ -2,6 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DarkSkyHourlyData } from 'src/app/shared/models/darksky.type';
 import { ChartsService } from 'src/app/shared/services/charts.service';
 import { Subscription } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { NgxChartsType } from 'src/app/shared/models/ngx-charts.type';
 
 @Component({
   selector: 'app-hourly-weather-chart',
@@ -12,33 +14,19 @@ export class HourlyWeatherChartComponent implements OnInit, OnDestroy {
 
   hourlyWeatherDataSubscription: Subscription;
   hourlyWeatherData: DarkSkyHourlyData[];
+  hourlyNgxChartsData: NgxChartsType[];
 
-  single = [
-    {
-      "name": "Germany",
-      "value": 8940000
-    },
-    {
-      "name": "USA",
-      "value": 5000000
-    },
-    {
-      "name": "France",
-      "value": 7200000
-    }
-  ];
+  // view: any[] = [700, 400];
+  view: any[] = [1200, 600];
 
-  view: any[] = [700, 400];
-
-  // options
   showXAxis = true;
   showYAxis = true;
   gradient = false;
   showLegend = true;
   showXAxisLabel = true;
-  xAxisLabel = 'Country';
+  xAxisLabel = 'Hours';
   showYAxisLabel = true;
-  yAxisLabel = 'Population';
+  yAxisLabel = 'Temperature';
 
   colorScheme = {
     domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
@@ -54,8 +42,29 @@ export class HourlyWeatherChartComponent implements OnInit, OnDestroy {
       console.log('from charts');
       console.log(data);
       this.hourlyWeatherData = data;
+      this.hourlyNgxChartsData = this.convertToNgxCharts(this.hourlyWeatherData);
+      console.log(this.hourlyNgxChartsData);
     })
   }
+
+  private convertToNgxCharts(hourlyData: DarkSkyHourlyData[]): NgxChartsType[] {
+    const a = hourlyData.map((hourly: DarkSkyHourlyData) => {
+      const time: Date = new Date(hourly.time*1000);
+      const timeToDisplay = this.convertToProperStringDate(time);
+      return {name: timeToDisplay, value: hourly.temperature};
+    });
+    return a;
+  }
+
+  private convertToProperStringDate(time: Date): string {
+    const hour = (time.getHours()>9)?time.getHours():'0'+time.getHours();
+    const minutes = (time.getMinutes()>9)?time.getMinutes():'0'+time.getMinutes();
+    const day = (time.getDate()>9)?time.getDate():'0'+time.getDate();
+    const mounth = (time.getMonth()>9)?(time.getMonth()+1):'0'+(time.getMonth()+1);
+    const timeToDisplay = (day + '/' + mounth + ' ' +  hour + ':' + minutes).toString();
+    return timeToDisplay;
+  }
+
 
   ngOnDestroy() {
     this.hourlyWeatherDataSubscription.unsubscribe();
