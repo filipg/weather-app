@@ -22,7 +22,8 @@ export class HourlyWeatherChartComponent implements OnInit, OnDestroy {
   yAxisLabel = 'Temperature';
 
   colorScheme = {
-    domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
+    // domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
+    domain: ['#AAAAAA']
   };
 
   constructor(

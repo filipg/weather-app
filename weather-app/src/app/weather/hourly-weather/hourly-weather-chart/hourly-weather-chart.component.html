@@ -11,4 +11,10 @@
   [xAxisLabel]="xAxisLabel"
   [yAxisLabel]="yAxisLabel"
   (select)="onSelect($event)">
+  <ng-template #tooltipTemplate let-model="model">
+    <div class="ngx-charts-tooltip">
+      {{model.name}}<br>
+      {{model.value}} C
+    </div>
+  </ng-template>
 </ngx-charts-bar-vertical>
