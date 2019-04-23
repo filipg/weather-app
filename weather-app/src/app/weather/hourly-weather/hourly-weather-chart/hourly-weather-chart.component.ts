@@ -17,15 +17,8 @@ export class HourlyWeatherChartComponent implements OnInit, OnDestroy {
   hourlyNgxChartsData: NgxChartsType[];
 
   // view: any[] = [700, 400];
-  view: any[] = [1200, 600];
-
-  showXAxis = true;
-  showYAxis = true;
-  gradient = false;
-  showLegend = true;
-  showXAxisLabel = true;
+  view: any[] = [980, 700];
   xAxisLabel = 'Hours';
-  showYAxisLabel = true;
   yAxisLabel = 'Temperature';
 
   colorScheme = {
