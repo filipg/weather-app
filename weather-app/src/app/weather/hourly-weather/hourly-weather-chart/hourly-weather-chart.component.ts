@@ -2,7 +2,6 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DarkSkyHourlyData } from 'src/app/shared/models/darksky.type';
 import { ChartsService } from 'src/app/shared/services/charts.service';
 import { Subscription } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { NgxChartsType } from 'src/app/shared/models/ngx-charts.type';
 
 @Component({
@@ -31,11 +30,8 @@ export class HourlyWeatherChartComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.hourlyWeatherDataSubscription = this.chartService.getHourlyWeather()
     .subscribe((data: DarkSkyHourlyData[]) => {
-      console.log('from charts');
-      console.log(data);
       this.hourlyWeatherData = data;
       this.hourlyNgxChartsData = this.convertToNgxCharts(this.hourlyWeatherData);
-      console.log(this.hourlyNgxChartsData);
     })
   }
 
@@ -53,8 +49,7 @@ export class HourlyWeatherChartComponent implements OnInit, OnDestroy {
     const minutes = (time.getMinutes()>9)?time.getMinutes():'0'+time.getMinutes();
     const day = (time.getDate()>9)?time.getDate():'0'+time.getDate();
     const mounth = (time.getMonth()>9)?(time.getMonth()+1):'0'+(time.getMonth()+1);
-    const timeToDisplay = (day + '/' + mounth + ' ' +  hour + ':' + minutes).toString();
-    return timeToDisplay;
+    return (day + '/' + mounth + ' ' +  hour + ':' + minutes).toString();
   }
 
   ngOnDestroy() {
