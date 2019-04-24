@@ -10,28 +10,42 @@ body {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    // align-content: flex-end;
     justify-content: flex-end;
 }
+
 &-action {
-    // width: auto;
     height: 100%;
     width: 400px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-right: 30px;
-    // border: 1px solid green;
 }
 &-items{
 
 }
 }
 
+// @media only screen and (max-width: 600px) {
+//     .navbar-container {
+//       height: 150px;
+//       flex-direction: column;
+//     }
+//     .navbar-action {
+//         display: block;
+//         // margin: 15px 0;
+//     }
+
+//     .button-weather {
+//         display: block;
+//         text-align: center;
+//         margin: 15px auto;
+//     }
+//   }
+
 .button-weather {
     cursor: pointer;
     outline: none;
-    // width: 150px;
     width: 170px;
     height: 50px;
     background-color:  #f2f2f2;

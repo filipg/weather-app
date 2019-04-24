@@ -18,6 +18,9 @@ import { OneDayComponent } from './weather/daily-weather/one-day/one-day.compone
 import { OneDayDatePipe } from './shared/pipes/one-day-date.pipe';
 import { HourlyWeatherChartComponent } from './weather/hourly-weather/hourly-weather-chart/hourly-weather-chart.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { MainNavComponent } from './main-nav/main-nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     DailyWeatherComponent,
     OneDayComponent,
     OneDayDatePipe,
-    HourlyWeatherChartComponent
+    HourlyWeatherChartComponent,
+    MainNavComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +45,13 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     HttpClientModule,
     BrowserAnimationsModule,
     MaterialModule,
-    NgxChartsModule
+    NgxChartsModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

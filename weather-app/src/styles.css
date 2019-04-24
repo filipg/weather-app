@@ -2,6 +2,7 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 html {
     box-sizing: border-box;
+    height: 100%;
 }
   *, *:before, *:after {
     box-sizing: inherit;
@@ -10,4 +11,5 @@ body {
     box-sizing: border-box;
     margin: 0;
     background-color: #f2f2f2;
+    height: 100%;
 }
