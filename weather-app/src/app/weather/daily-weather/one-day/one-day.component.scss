@@ -1,12 +1,11 @@
 .one-day-weather {
     &-container {
-        width: 45%;
-        min-height: 600px;
+        width: 100%;
         display: inline-block;
         vertical-align: top;
         border: 1px solid #cccccc;
         text-align: center;
-        margin: 20px;
+        margin: 20px 0;
         font-size: 26px;
         font-weight: 200;
         cursor: pointer;
@@ -32,5 +31,15 @@
 
     &-content {
         
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .one-day-weather {
+        &-container {
+            width: 45%;
+            min-height: 600px;
+            margin: 20px;
+        }
     }
 }
