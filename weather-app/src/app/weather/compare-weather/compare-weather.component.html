@@ -1,3 +1,19 @@
-<div>
-  compare-weather works!
+<div class="compare-weather-container">
+  <div class="compare-weather-header">
+    <form class="compare-weather-form">
+      <mat-form-field class="compare-weather-header-form-input">
+        <input matInput placeholder="Check weather in ..." 
+          #selectedCityOne autocomplete="off" (change)="checkForError()">
+      </mat-form-field>
+      <mat-form-field class="compare-weather-header-form-input">
+          <input matInput placeholder="And compare with ..." 
+            #selectedCityTwo autocomplete="off" (change)="checkForError()">
+        </mat-form-field>
+      <button class="compare-weather-header-form-button" mat-button color="primary"
+        (click)="checkWeather(selectedCityOne.value, selectedCityTwo.value)">Check</button>
+    </form>
+  </div>
+  <div *ngIf="locationError" class="selection-error">
+    Unable to find location, try one more time
+  </div>
 </div>
